@@ -42,6 +42,37 @@ Greg separates what most AI systems collapse into one undifferentiated model cal
 
 ---
 
+## The Glass Box
+
+The AI industry has a black box problem. Modern language models are opaque — you can test their inputs and outputs, but you cannot see the decision chain in between. Every autonomous agent built on top of these models inherits that opacity. You prompt it, it does things, you see the result. You have no idea *why* it chose that action, what confidence it had, what it considered and rejected, what emotional state influenced the decision, or whether the authority it acted under was real or inferred.
+
+Gregore inverts this. The language models Greg calls are still opaque — that's the model provider's problem. But everything around them is fully transparent:
+
+- **Every routing decision** is a typed selection from a declared set, with the confidence score, the option set that was considered, and the reason logged
+- **Every authority chain** is a provenance graph: intent → grant → plan → evidence → verification, all traversable
+- **Every emotional state** at the moment of a decision is explicit and observable through SNARC — not inferred, not hidden, not approximated
+- **Every deliberation** produces typed verdicts from named seats with position tracking across rounds — not "the model thought about it"
+- **Every outcome** is scored by POSTCOG against what was claimed, and the score feeds back into the routing model
+- **Every gate veto** is logged with the full reason, the vetoed claim, and what happened next
+
+The models are black boxes. The agent is a glass box. Every decision, every authority exercise, every emotional influence, every confidence score, every temporal observation is typed, logged, and auditable. The glass box is the instrument — you can observe exactly what happens to the decision chain when you change any input, including the voice.
+
+### Temporal Epistemic Uncertainty
+
+Most systems treat observations as either current or stale, binary. Gregore treats observation validity as a continuous decay function. Every node in the TESSRYX dependency graph carries:
+
+- **`observation_at`** — when the evidence was captured
+- **`volatility_class`** — how fast this domain changes (a DNS record: minutes. A credential expiry date: fixed until it changes. A chat-based authorization: fragile.)
+- **`confidence_now`** — computed from `base_confidence × decay_function(age, volatility_class)`
+
+The reconciliation heartbeat uses this to prioritize: stale high-volatility nodes get re-checked first. The system can distinguish "this is fine, it hasn't changed" from "this is stale, I don't actually know" — and it does this continuously, not on demand.
+
+This is what the field calls epistemic uncertainty over world state. Papers describe it. Gregore runs it. Every capability, every grant, every observation, every work item in the graph has a real-time confidence score that decays based on how fast that domain moves. When a credential expires, blast-radius analysis shows every downstream capability that went dark. When a deployment drifts, the graph shows what depends on it and how stale the evidence is.
+
+The architecture is not just what Greg runs on. It is a pattern — observable, temporally-aware, authority-explicit — that every autonomous agent is going to need.
+
+---
+
 ## Organs
 
 Named, composable subsystems with defined responsibilities, typed interfaces, and independent state.
