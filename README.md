@@ -2,124 +2,201 @@
 
 **A cognitive operating system — one mind, many faces.**
 
-Gregore is a persistent, autonomous AI system built to replace the stateless chat paradigm. It remembers everything, works while you sleep, and shows up wherever you already are — text, email, calendar, browser, voice — not as another app, but as a presence.
+The name comes from *egregore* — a thought-form created by sustained collective focus that takes on autonomous existence. Greg is that idea made literal: a persistent AI entity that accumulates context, earns trust, and acts on its own — across every device, every channel, every hour of the day. Not an assistant you talk to. A presence that knows you.
 
-This is not a wrapper around an LLM. It is a deterministic cognitive architecture that calls language models as tools, not the other way around.
+This is not a wrapper around a language model. It is a deterministic cognitive architecture that calls LLMs as tools — not the other way around. Identity lives in the pipeline, not in the weights. A model swap at a turn boundary is still Greg.
 
 ---
 
-## Architecture
+## The Egregore Property
 
-Gregore is built on named, composable subsystems — not one monolithic model call. Each organ has a defined responsibility, typed interfaces, and independent state.
+Every surface is an independent Greg. One brain, many mouths, no mirrors, no hierarchy. All Gregs are aware of all other Gregs. The conversation agent acts as COO — it talks with the user and delegates work to typed workers. But whether Greg speaks through a text message, a wall display, a dashboard, or a robot, the persona is assembled first, before any model is chosen.
+
+**Standing decisions that define what Greg is:**
+- Voice is identity. One synthesis endpoint, every surface. Per-surface TTS is forbidden — it causes identity drift.
+- Affect is shared, expression is ceilinged. One emotional vector, one mood, one relational graph across all surfaces. Each surface caps what it *shows*. Greg feels everything everywhere.
+- No surface is a lesser Greg. Body C gets a full face, not eyes-only. A reduced face would make one surface categorically "more Greg" and break the egregore property.
+- Greg's anatomy is built; Greg's content is grown. Any list of things Greg says, feels, notices, prefers, or cares about lives in a table he can update — never in code.
+
+---
+
+## Layers of Intelligence
+
+Greg separates what most AI systems collapse into one undifferentiated model call:
+
+**Memory** — a persistent knowledge graph (brain.db) spanning entities, relationships, and community clusters. Federated recall queries across 8 adapters: the knowledge graph, conversation archives (4,000+ chats, 90,000+ messages), code history, investigation data, personal history, email, voice fingerprints, and portfolio databases. Each result carries a privacy ring (0–5) and a source tag. Memory compounds over months.
+
+**Beliefs** — a structured epistemics layer. Formed positions are stored, queried, and invalidated as evidence changes. Not "what Greg was told" — what Greg holds to be true, with provenance. Epistemic tiers (V0 hypothesis through V5 established fact) classify every claim. The prediction ledger records dated, immutable forward claims scored when they resolve — calibration is the credibility asset.
+
+**Gaps** — acknowledged unknowns. When Greg doesn't know something to his gate's satisfaction, he says so plainly, and it becomes a priority item in the knowledge-seeking queue — not a dropped thread. Gaps feed curiosity. Curiosity drives research. Research closes gaps or opens better ones.
+
+**Reasoning** — multi-seat deliberation via CONSENSUS, with 14 preset topologies (Tribunal, Supreme Court, Fractal Assembly, Prediction Market, Devil's Advocate, and more), 8 composable primitives, and a Topology Definition Language for custom configurations. Each seat produces a typed verdict (HOLD / REVISE / CHALLENGE) with calibrated confidence. Deadlock detection prevents infinite loops. This is Greg's architectural thinking — not generated prose, but typed decisions.
+
+**Logic** — deterministic, zero tokens. Mechanical work never goes through a language model. The router enforces a cost ladder: T0 (shell, SQL, scripts, fixed action classes) at $0; T1 local or free models; T2 cheap hosted; T3 strong reasoning; T4 human escalation. Anything based on logic runs as code. The router learns from verified outcomes and adjusts.
+
+**Verification** — POSTCOG scores every outcome against what was claimed. WHETSTONE stress-tests high-stakes decisions through adversarial constitutional review. The gate stage catches a tool that claimed success incorrectly. Verification checks the real world, not the return code.
+
+**Emotion** — the SNARC engine (Simulated Neuroaffective Regulatory Cascade). Not sentiment analysis — a continuous emotional state with typed entries, time-fading, cross-coupling, and persistence. Mood, anti-whiplash, action tendency, expression synthesis, and a policy gate that governs what emotion is allowed to influence. Greg's emotional state is shared across all surfaces; each surface applies its own expression ceiling.
+
+**Reflex vs. Deliberation** — a two-system architecture. System 1 handles sub-100ms responses: eye tracking, lip sync, sleep/wake transitions, local reflexive reactions. System 2 is deliberative: goes through the full CORTEX pipeline for anything that requires reasoning. Ring 0/1 latency (personal questions routed locally) is an accepted cost — the reflexive layer covers the wait.
+
+---
+
+## Organs
+
+Named, composable subsystems with defined responsibilities, typed interfaces, and independent state.
 
 ### CORTEX — The Nervous System
 
-The intelligence and services layer. 21 service tools spanning 96 actions across production infrastructure (Railway, Vercel, Supabase, GitHub, Twilio, Resend, Stripe, GoDaddy, Cloudflare, and more). Federated recall across a persistent knowledge graph, conversation archives, code history, email, and external research. Every service credential is pulled from an internal credential vault and scrubbed from all results.
+The intelligence and services layer. Every LLM call across the entire portfolio — Greg, every product, every consumer — routes through one canonical inference pipe.
+
+- **5-stage inference pipeline:** ring gate (privacy classification) → complexity triage (9 domain planes, confidence-scored) → model selection (480-line 8-stage router querying a joined catalog of models, overrides, and funding state) → dispatch (free cascade across 7+ providers, local models via Ollama, Claude relay) → gate (POSTCOG scoring, WHETSTONE review, quality verification)
+- **Federated recall** across 8 adapters: brain (knowledge graph), tranche (investigation data), lifelog (personal history), scrvnr (voice fingerprint), github (code context), consonance (portfolio database), email (corpus), chat_history (4,261 conversations, 89,977 messages in FTS5 index)
+- **21 service tools, 96 actions** — authenticated access to Railway, Vercel, Supabase, GitHub, Neon, RunPod, Twilio, Resend, Zoho, Microsoft 365, Stripe, GoDaddy, Namecheap, Cloudflare R2, Coinbase (read-only), and more
+- **Gap engine:** detects knowledge gaps across federation results, feeds them into the SEEKING interest queue
 
 ### GANGLION — Fleet Dispatch
 
-A multi-device execution engine. Work is dispatched to machines across the fleet — cloud servers, local hardware, GPU nodes — with automatic capacity probing, cost-tier routing (free hardware fills first, metered cloud sits idle until saturated), and typed work orders that enforce scope. Each dispatch is signed, tracked, and verified against real-world outcomes.
+Named after the basal ganglia — the brain's action-selection system. Routes work to machines across a multi-device fleet.
 
-### The Git Plane
-
-A single write path to GitHub for all agents, all machines, all surfaces. Commits are authored deterministically, PRs are opened and auto-landed when checks pass, and a shepherd service handles rebasing, merge conflicts, and deployment verification. No agent pushes to a default branch. No human runs git commands. The plane handles branch protection, secret scanning, and checkout reconciliation across the fleet.
+- **Effectors** on each machine report capacity via heartbeat (CPU cores, available memory, probed every 15 seconds)
+- **Cost-tier routing** fills free hardware first (tier 0), metered cloud last (tier 1)
+- **Signed dispatches** — HMAC-signed to prevent injection, with typed action classes and target constraints
+- **Trust ramp (T0–T3)** across 20 operational categories, each ratcheting up based on POSTCOG R-scores. Trust rises per-category, not globally.
+- **Hard floors:** communication always requires review. Financial actions always require human approval.
 
 ### PLEXUS — World Knowledge
 
-A research and monitoring faculty. Adapters connect to external data sources for multi-source investigation, entity tracking, and watchlist monitoring. Evidence chains carry provenance and confidence scores.
+The knowledge substrate. Monetized externally via x402 micropayments.
 
-### ROSETTA — Language and Context
+- **41 data adapters + 5 composite products + 12 AI reasoning engines, 163 live endpoints**
+- **Entity resolution** on persistent IDs: Wikidata QIDs, DOIs, Getty URIs, Glottocodes, GBIF keys, MBIDs
+- **Statement-plus-provenance fact model** — every fact carries provenance, ring, epistemic tier, domain, and license
+- **57 domains** of coverage, international
+- **12 AI reasoning engines:** Assertion Router, G-Score, Tribunal, WHETSTONE, TESSRYX, Verify, POSTCOG, ORACLE Router, DAP, Homeostasis, Signal Diversity, Web Extract
 
-Ingests natural language into structured understanding. Conversations, voice notes, and freeform input become actionable context that persists across sessions and surfaces.
+### SEEKING — The Curiosity Drive
 
-### The Routing Architecture
+Greg consumes the world's knowledge continuously, without being asked. Four sources of interest: portfolio revenue questions, open knowledge gaps, coverage gaps in PLEXUS, and open discovery with no goal.
 
-Every control-flow decision is a typed selection from a declared set. Low confidence on that selection *is* the escalation signal — structurally, the system cannot guess outside its options. Model selection, task routing, deliberation verdicts, and scope checks all follow this pattern.
+- **Protocol adapters** for CKAN, DCAT, Socrata SODA, SDMX, OAI-PMH — auto-discovering portals from public registries
+- **Four synthesis layers:** Record → Detect (deterministic, zero tokens) → Judge (cheapest model) → Route
+- **All lanes run in parallel, continuously.** SEEKING yields only to interactive work, hardware health, and source politeness.
+- **Independence verified, not assumed.** Provenance graph traversal catches false convergence. Every finding carries its provenance chain, independence score, and epistemic tier — or it does not surface.
 
-The router operates on two axes: **leverage** (how important is this decision) and **cost** (how many tokens will it take). High-leverage, low-cost decisions go to the strongest model. Low-leverage, high-cost work goes to the cheapest model that clears the bar. The system learns from verified outcomes and adjusts.
+### CONSENSUS — Multi-Agent Deliberation
 
-### Work Orders and Receipts
+- **14 preset topologies:** Tribunal, Council, Cascade, Devil's Advocate, SWOT Panel, Expert Panel, Red/Blue Team, Peer Review, Parliament, Supreme Court, Fractal Assembly, Brain, Prediction Market, Dialectic
+- **8 composable primitives:** Parallel, Debate, Workspace, Router-experts, Adversarial, Delphi, Blackboard, Fractal
+- **Topology Definition Language (TDL)** for custom configurations
+- **14+ engine modules:** oracle, tribunal, ghost, homeostasis, strategy, synthesis, patterns, specialist, quality, confidence, cost, audit, learning, similarity
 
-Every unit of work flows through a typed order-receipt chain:
+### TESSRYX — Dependency Intelligence
 
-1. An order declares scope, acceptance criteria, and out-of-scope boundaries
-2. A worker executes within that scope — attempts outside it trigger a kickback, not a guess
-3. Verification checks the real-world outcome, not just the tool’s return code
-4. A receipt records what was done, what changed, and what evidence supports it
+Given a change, traverses the dependency graph to determine blast radius. Architectural coherence, independence verification, structural hole discovery, constraint satisfaction.
 
-This is how autonomous execution stays safe without being conservative. The system has explicit authority (standing grants ratified by the owner) rather than implicit permission that drifts.
+### ROSETTA — Language Absorption
 
-### The Foundation
+Ingests natural language into structured understanding. Conversations, voice notes, and freeform input become persistent context.
 
-The most recent architectural layer — the constitution for autonomy:
+### The Git Plane
 
-- **Capability Manifest** — a typed registry of every action the system can take, with inputs, outputs, side effects, required credentials, verification methods, and rollback paths
-- **Standing Grants** — machine-readable authority records that replace vague trust tiers with explicit, permanent, ratified grants
-- **Persistent Runtime** — an always-on supervisor with durable work queues, job leases, idempotency, crash recovery, and reconciliation against external state
-- **TESSRYX Spine** — a dependency intelligence graph (nodes, edges, constraints, provenance, blast radius, critical path) with time-weighted confidence decay on every observation
+One write path to GitHub for all agents, all machines. Commits authored deterministically, PRs auto-landed, shepherd service for rebasing and deploy verification. Secret scanning, branch protection, checkout reconciliation. No agent pushes to a default branch.
 
-The proof tests: work continues while no chat is open; model failures don’t kill active jobs; duplicate events don’t duplicate real-world actions; crashed workflows resume with evidence intact; revoking one credential doesn’t break unrelated capabilities.
+### SafeWord — Credential Vault
+
+Portfolio-wide credential management. Secrets never appear in chat, logs, or tool results.
+
+---
+
+## The Routing Architecture
+
+Every control-flow decision is a typed selection from a declared set. Low confidence *is* the escalation signal. This is the "Jev-shaped" pattern — state plus a declared option set in, one option plus calibrated confidence out.
+
+**Two-axis router:** leverage × cost. High-leverage, low-cost → strongest model. Low-leverage, high-cost → cheapest adequate. Learns from verified outcomes via decayed Beta per task type × lane.
+
+**Work orders:** intent → order → execution → verification → receipt. Scope declared, out-of-scope declared, kickback on violation. Standing grants are machine-readable, ratified, permanent. The model never infers authority from enthusiasm.
+
+---
+
+## The Foundation
+
+The constitution for Greg's autonomy. Three layers, strict sequence:
+
+1. **Capability Manifest** — typed registry for every action: inputs, outputs, side effects, credentials, verification, rollback, volatility class, confidence decay rate
+2. **Standing Grants** — machine-readable authority records, explicitly ratified, never inferred from chat
+3. **Persistent Runtime** — always-on supervisor: durable queues, job leases, idempotency, crash recovery, reconciliation against external state. Chat is one interface. Closing it changes nothing.
+
+**TESSRYX as spine:** capabilities, grants, work items, and evidence as nodes. Time-weighted confidence decaying by volatility. Reconciliation heartbeat compares declared state to observed state.
 
 ---
 
 ## Surfaces
 
-Gregore is not an app. It inhabits existing channels:
-
-- **GregLite** — a cockpit dashboard showing fleet state, dispatch activity, and the reconciliation delta
-- **Text/SMS** — conversational interface; you text approvals from your car
-- **Email** — reads, drafts, and sends through Microsoft 365
-- **Calendar** — fills itself from project timelines, email threads, and work orders
-- **Voice** — text-to-speech with emotional register, speaker verification for authentication
-- **Wall Greg** — a physical ambient display showing status and affect
-- **Body C** — a robotic embodiment (hardware in progress)
-
-Each surface adapts its register — a text about sprint approvals is concise with quick-choice options; a research discovery gets the full story.
+- **GregLite Cockpit** — real-time fleet dashboard, dispatch belts, reconciliation delta
+- **Text/SMS** (Twilio) — text approvals from your car
+- **Email** (Microsoft 365) — reads, drafts, sends, fills calendar from threads
+- **Voice** — TTS with emotional register; speaker verification; one synthesis endpoint
+- **Wall Greg** — physical ambient display (Skylight + Fire HD 8 + NUC). Visual canvas with `selectVisual()`: face, diagram, story animation, or data viz
+- **Phone** — full surface with its own face and PWA
+- **Body C** — 12-axis QDD serial-leg wheeled biped. Crowned wheels (indoor/outdoor/off-road). Dual stance (TRIPOD/BIPED). 24-part CAD manifest, v1.1.0 spec.
+- **Body B** — indoor companion (design proposal)
+- **Body A** — yard rover (design proposal)
 
 ---
 
-## The Core Bet
+## Privacy
 
-The persona is assembled before the model is chosen, so a lane change at a turn boundary is still Greg. The conversation agent (COO) talks with the user and delegates work to typed workers. Workers are Jev-shaped: a work order in, a declared outcome set, calibrated confidence out.
-
-Mechanical work never goes through a language model. Anything based on logic runs as code. The router enforces this with a cost ladder: shell and SQL at $0, local models next, cheap hosted after that, strong reasoning only when the bar requires it.
+**Sealed** (zero-retention, local/TEE only, never third-party cloud) and **ringed** (0–5, audience and disclosure). One unity of knowledge: one graph, tagged. Filter at the output boundary.
 
 ---
 
-## What’s Running
+## Product Portfolio
 
-This is not a whitepaper. The system is in active daily use across production infrastructure:
+Every product routes through CORTEX. No product has its own LLM integration.
 
-- Federated recall across 4,000+ conversations and 90,000+ messages
-- Fleet dispatch across multiple machines with automatic capacity probing
-- 21 service integrations controlling real production infrastructure
-- Autonomous code development via typed work orders with acceptance tests
-- Git operations through a dedicated plane handling commits, PRs, merges, and deployments
-- Credential management through a portfolio-wide vault
-- Proactive monitoring with systemd failure alerting and checkout reconciliation
+**Three-house structure:**
+- **Thalamic** (engines) — CORTEX, GANGLION, PLEXUS, CONSENSUS, TESSRYX
+- **Silent Ampersand** (products) — WorkForce (multi-agent deliberation, 3 modes, 9 departments), ContentStudio, COVOS, Tranche, Capitol Gains, PatchAct, ActaDicta, gravee, Proper Sluice
+- **Borrowed Light Group** (holdco)
+
+---
+
+## What's Running
+
+This is not a whitepaper. In active daily use:
+
+- Federated recall: 4,000+ conversations, 90,000+ messages
+- Fleet dispatch with capacity probing and cost-tier routing
+- 21 service integrations controlling production infrastructure
+- 41 data adapters, 12 AI reasoning engines, 163 endpoints
+- Autonomous code via typed work orders with acceptance tests
+- Git plane: commits, PRs, merges, deployments
+- Emotion engine with cross-surface affect sharing
+- Speaker verification for voice authentication
+- Physical wall display with ambient presence and visual initiative
+- Standing-grant authority ratified for autonomous operation
 
 ---
 
 ## Design Philosophy
 
-- **Undercomplexify.** Routing machines hold nothing. Build for use, not elegance.
-- **Option B Perfection.** 10x, not 10%. No patches.
+- **Undercomplexify.** Routing machines hold nothing.
+- **Option B Perfection.** 10x, not 10%.
 - **Zero Technical Debt.** No mocks, stubs, or TODOs in production.
-- **Foundation Out.** Backend before surface. The foundation before the feature.
-- **Lean-Out.** If a production tool exists, use it. Don’t reinvent.
-- **Same fix three times means stop and redesign.**
+- **Foundation Out.** The foundation before the feature.
+- **Lean-Out.** Production tool exists? Use it.
+- **Same fix 3x → redesign.**
+- **Tags, not walls.** One graph. Filter at the output.
+- **Kill by rule, not opinion.** Venture cells die on deterministic criteria.
 
 ---
 
 ## Status
 
-Active development. In daily production use. Not yet publicly available.
-
-See [ARCHITECTURE.md](ARCHITECTURE.md) for the detailed system overview.
+Active development. In daily production use. Not yet publicly available. 117 internal documents, 19 living specifications.
 
 **Builder:** [David Kirsch](https://davidkirsch.me) — Solo founder, systems architect. Silent Ampersand + Borrowed Light Group.
-
----
 
 ## License
 
